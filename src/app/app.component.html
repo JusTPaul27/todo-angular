@@ -1,6 +1,6 @@
 <h1>{{title}}</h1>
 
-<div class="todo-card" *ngFor="let todo of todosArray"> 
+<div [style.border-color]="todo.color" class="todo-card" *ngFor="let todo of todosArray"> 
   <span>{{todo.name}}</span>
   <span>{{todo.creationDate}}</span>
   <span>{{todo.priority}}</span>
