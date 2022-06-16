@@ -55,7 +55,7 @@ export function getPriorityColor(priority: TodoPriority): string{
         case TodoPriority.HIGH:
                 return 'orange';                   
         default:
-            return 'red';
+            return 'tomato';
     }
 }
 

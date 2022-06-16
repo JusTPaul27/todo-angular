@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { TodoClass } from './model/todo-class';
-import { TODOS } from './model/todos-mock';
+import { TodoClass, TodoPriority } from './model/todo-class';
+import { fromPrioritytoColor, fromPrioritytoDescr, TodoInterface } from './model/todo-interface';
+import { TODOS, TODOS_I } from './model/todos-mock';
+import { TodoListComponent } from './components/todo-list/todo-list.component';
 
 @Component({
   selector: 'app-root',
@@ -8,15 +10,30 @@ import { TODOS } from './model/todos-mock';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  ngOnInit(): void {
-    console.log(TODOS);
-    
-  }
+
   title = 'todo-angular';
   todosArray: TodoClass[];
 
   constructor(){
     this.todosArray = TODOS;
+  }
+
+
+  ngOnInit(): void {
+    
+  }
+
+  getCorrectDate(timeStamp: number) :Date{
+    const milliseconds = timeStamp*1000;
+    return new Date(milliseconds);
+  }
+
+  getDescription(priority: TodoPriority){
+    return fromPrioritytoDescr(priority);
+  }
+
+  getColor(priority: TodoPriority){
+    return fromPrioritytoColor(priority);
   }
 
 }
