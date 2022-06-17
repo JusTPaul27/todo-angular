@@ -1,5 +1,12 @@
 <div class="container">
-    <app-todo-list-element *ngFor="let todo of todos" [todo]="todo"></app-todo-list-element>
+    <button class="button" (click)="orderByName()">Order by name</button>
+    <button class="button" (click)="orderByDate()">Order by date</button>
+    <button class="button" (click)="orderByPriority()">Order by priority</button>
+    <app-todo-list-element 
+    *ngFor="let todo of todos"
+     [todo]="todo"
+     (onTodoCompleted)="manageTodoEmission($event)">
+    </app-todo-list-element>
 </div>
 
 

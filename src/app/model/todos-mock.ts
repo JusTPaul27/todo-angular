@@ -9,12 +9,13 @@ const todo3 = new TodoClass('comprare pane');
 const todo4 = new TodoClass('annaffiare piante', [], new Date(), TodoPriority.MEDIUM);
 const todo5 = new TodoClass('comprare fumetti', [], new Date(), TodoPriority.VERYHIGH);
 const todo6 = new TodoClass('impostare sveglia gara 6 finals nba', [], new Date(), TodoPriority.DONE);
+const todo7 = new TodoClass('sistemare radio', [], new Date("2001-07-02T00:00:00.000Z"), TodoPriority.LOW);
 
 
 TODOS.push(todo1);
 TODOS.push(todo2);
 TODOS.push(todo3);
-TODOS.push(todo4, todo5, todo6);
+TODOS.push(todo4, todo5, todo6, todo7);
 
 export const TODOS_I: TodoInterface[] = [
     {
