@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { TodoClass } from 'src/app/model/todo-class';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -7,10 +8,18 @@ import { TodoClass } from 'src/app/model/todo-class';
   styleUrls: ['./todo-list.component.scss']
 })
 export class TodoListComponent implements OnInit,  AfterViewInit, OnDestroy {
-  @Input() todos: TodoClass[];
+  // @Input() todos: TodoClass[];
+  todosArray: TodoClass[];
 
-  constructor() { 
-    this.todos = [];
+  
+
+  constructor(private dataServ: DataService) { 
+    this.todosArray = dataServ.getActiveTodos();
+  }
+
+
+  refreshArray(){
+    this.todosArray = this.dataServ.getActiveTodos();
   }
 
   ngOnInit(): void {
@@ -27,7 +36,7 @@ export class TodoListComponent implements OnInit,  AfterViewInit, OnDestroy {
   }
   
   manageTodoEmission(todo: TodoClass){
-    console.log('list component', todo.name);
+    this.refreshArray();
     this.orderByPriority();
     
   }
@@ -43,15 +52,15 @@ export class TodoListComponent implements OnInit,  AfterViewInit, OnDestroy {
     // this.todos.sort((a,b)=>{
     //  return a.name.localeCompare(b.name);
     // })
-    this.todos.sort(TodoClass.compareTodoByName);
+    this.todosArray.sort(TodoClass.compareTodoByName);
   }
 
   orderByDate(){
-    this.todos.sort(TodoClass.compareTodoByDate);
+    this.todosArray.sort(TodoClass.compareTodoByDate);
   }
 
   orderByPriority(){
-    this.todos.sort(TodoClass.compareTodoByPriority);
+    this.todosArray.sort(TodoClass.compareTodoByPriority);
   }
 
 }

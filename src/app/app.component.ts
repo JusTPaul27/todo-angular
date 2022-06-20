@@ -12,10 +12,10 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
 export class AppComponent implements OnInit{
 
   title = 'todo-angular';
-  todosArray: TodoClass[];
+  // todosArray: TodoClass[];
 
   constructor(){
-    this.todosArray = TODOS;
+    // this.todosArray = TODOS;
   }
 
 

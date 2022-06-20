@@ -1,13 +1,11 @@
 <div class="container">
     <button class="button" (click)="orderByName()">Order by name</button>
     <button class="button" (click)="orderByDate()">Order by date</button>
-    <button class="button" (click)="orderByPriority()">Order by priority</button>
-    <button class="button" (click)="refreshArray()">Refresh</button>
+    <button class="button" (click)="refreshArray()" >Refresh</button>
     <app-todo-list-element 
     *ngFor="let todo of todosArray"
      [todo]="todo"
      (onTodoCompleted)="manageTodoEmission($event)">
     </app-todo-list-element>
 </div>
-
 
