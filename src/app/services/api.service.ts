@@ -28,7 +28,7 @@ export class ApiService {
     return todoArray;
    }
 
-   fetchData(){
-    return fetch('https://628b2f157886bbbb37b20caa.mockapi.io/todos')
-   }
+  //  fetchData(){
+  //   return fetch('https://628b2f157886bbbb37b20caa.mockapi.io/todos')
+  //  }
 }

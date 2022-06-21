@@ -1,3 +1,9 @@
+.container-todo{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+
 .button{
     margin: 2px;
     border-style: solid;
