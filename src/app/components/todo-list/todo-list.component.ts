@@ -9,17 +9,20 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class TodoListComponent implements OnInit,  AfterViewInit, OnDestroy {
   // @Input() todos: TodoClass[];
-  todosArray: TodoClass[];
+  todosArray: TodoClass[] = [];
 
   
 
   constructor(private dataServ: DataService) { 
-    this.todosArray = dataServ.getActiveTodos();
+    dataServ.getActiveTodos().subscribe({
+      next: todos => this.todosArray = todos,
+      error: err => console.log(err)
+    });
   }
 
 
   refreshArray(){
-    this.todosArray = this.dataServ.getActiveTodos();
+  //   this.todosArray = this.dataServ.getActiveTodos();
   }
 
   ngOnInit(): void {
@@ -36,9 +39,7 @@ export class TodoListComponent implements OnInit,  AfterViewInit, OnDestroy {
   }
   
   manageTodoEmission(todo: TodoClass){
-    this.refreshArray();
-    this.orderByPriority();
-    
+    this.dataServ.refreshTodos();
   }
 
 

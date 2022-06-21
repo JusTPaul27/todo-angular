@@ -10,7 +10,7 @@ export class TodoListElementComponent implements OnInit {
 
   @Input() todo?: TodoClass;
   @Output() onTodoCompleted = new EventEmitter<TodoClass>();
-
+  @Output() onTodoDeleted = new EventEmitter<TodoClass>();
   constructor() { }
 
   ngOnInit(): void {
@@ -19,6 +19,10 @@ export class TodoListElementComponent implements OnInit {
   todoCompleted(){
     this.todo?.done();
     this.onTodoCompleted.emit(this.todo);
+  }
+
+  todoDeleted(){
+    this.onTodoDeleted.emit(this.todo);
   }
 
 }
