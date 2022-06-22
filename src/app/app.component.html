@@ -5,10 +5,14 @@
   <span>priorità: {{getDescription(todo.priority)}}</span>
 
 </div> -->
+<header class="header"><h1>{{title}}</h1>
+  <nav>
+    <a routerLink="/active">Active ToDos</a>
+    <a routerLink="/done">Done ToDos</a>
+  </nav>
+</header>
 
+<!-- <app-todo-list ></app-todo-list>
 
-<h1>{{title}}</h1>
-<app-todo-list ></app-todo-list>
-<h2>Todo eseguiti</h2>
-<app-done-list></app-done-list>
+<app-done-list></app-done-list> -->
 <router-outlet></router-outlet>

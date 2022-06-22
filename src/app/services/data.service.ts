@@ -67,5 +67,12 @@ export class DataService {
     this.todos.next(newArray);
    }
 
+   getTodoById(id: string): Observable<TodoClass | undefined>{
+    return this.todos.pipe(
+    map(array => array.find(t => t.id === id))
+    )
+    
+   }
+
 
 }
