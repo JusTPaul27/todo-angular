@@ -69,6 +69,21 @@ export class DataService {
     return this.apiServ.deleteTodo(todo.id!);
    }
 
+
+   saveTodo(todo: TodoClass){
+    if (todo.id) {
+      return this.apiServ.putTodo(todo);
+    } else {
+      return this.apiServ.postTodo(todo).pipe(
+        map(todo => {
+          const newArray = [...this.todos.value, todo];
+          this.todos.next(newArray);
+          return todo;
+        })
+      )
+    }
+   }
+
    getTodoById(id: string): Observable<TodoClass | undefined>{
     return this.todos.pipe(
     map(array => array.find(t => t.id === id))
