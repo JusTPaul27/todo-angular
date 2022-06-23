@@ -39,7 +39,10 @@ export class TodoListComponent implements OnInit,  AfterViewInit, OnDestroy {
   }
   
   manageTodoEmission(todo: TodoClass){
-    this.dataServ.refreshTodos();
+    this.dataServ.completeTodo(todo).subscribe({
+      next: todo => console.log('Yohohoho! ', todo),
+      error: err => console.log(err)      
+    })
   }
 
 

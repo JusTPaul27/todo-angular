@@ -57,14 +57,16 @@ export class DataService {
    }
 
 
-   refreshTodos(){
+   completeTodo(todo: TodoClass): Observable<TodoClass>{
     const newArray = [...this.todos.value];
     this.todos.next(newArray);
+    return this.apiServ.putTodo(todo);
    }
 
    removeTodo(todo: TodoClass){
     const newArray = this.todos.value.filter(t => t !== todo);
     this.todos.next(newArray);
+    return this.apiServ.deleteTodo(todo.id!);
    }
 
    getTodoById(id: string): Observable<TodoClass | undefined>{

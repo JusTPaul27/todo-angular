@@ -27,8 +27,11 @@ export class DoneListComponent implements OnInit {
     // this.todosArray = this.dataServ.getDoneTodos();
   }
   
-  manageTodoDelete(todo: TodoClass){
-    this.dataServ.removeTodo(todo);
+  manageTodoDelete(todo: TodoClass) {
+    this.dataServ.removeTodo(todo).subscribe({
+      next: res => console.log(res),
+      error: err => console.log(err)     
+    })
   }
 
   orderByName(){
